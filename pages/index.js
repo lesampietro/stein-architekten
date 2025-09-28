@@ -13,17 +13,31 @@ export default function Home() {
       id: 1,
       name: "HAUS G",
       location: "GIESSEN, DEUTSCHLAND",
-      image: "/images/haus-g.jpg", // Substitua pelo caminho real da imagem
-      number: "1/27"
+      image: "/images/haus-1/house02-01.jpg", 
+      number: "1/4"
     },
     {
       id: 2,
       name: "HAUS M",
       location: "MÜNCHEN, DEUTSCHLAND", 
-      image: "/images/haus-m.jpg",
-      number: "2/27"
+      image: "/images/haus-2/01.jpg",
+      number: "2/4"
     },
-    // Adicione mais projetos conforme necessário
+    {
+      id: 3,
+      name: "HAUS G",
+      location: "GIESSEN, DEUTSCHLAND",
+      image: "/images/haus-1/house02-02.jpg", 
+      number: "3/4"
+    },
+    {
+      id: 4,
+      name: "HAUS M",
+      location: "MÜNCHEN, DEUTSCHLAND", 
+      image: "/images/haus-2/house01-02.jpg",
+      number: "4/4"
+    },
+    
   ];
 
   // useEffect para criar um slideshow automático (conceito de ciclo de vida)
