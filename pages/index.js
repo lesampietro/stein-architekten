@@ -13,31 +13,30 @@ export default function Home() {
       id: 1,
       name: "HAUS G",
       location: "GIESSEN, DEUTSCHLAND",
-      image: "/images/haus-1/house02-01.jpg", 
+      image: "/images/haus-01/01.jpg",
       number: "1/4"
     },
     {
       id: 2,
       name: "HAUS M",
       location: "MÜNCHEN, DEUTSCHLAND", 
-      image: "/images/haus-2/01.jpg",
+      image: "/images/haus-02/house02-01.jpg",
       number: "2/4"
     },
-    {
-      id: 3,
+		    {
+      id: 1,
       name: "HAUS G",
       location: "GIESSEN, DEUTSCHLAND",
-      image: "/images/haus-1/house02-02.jpg", 
+      image: "/images/haus-01/house01-02.jpg",
       number: "3/4"
     },
     {
-      id: 4,
+      id: 2,
       name: "HAUS M",
       location: "MÜNCHEN, DEUTSCHLAND", 
-      image: "/images/haus-2/house01-02.jpg",
+      image: "/images/haus-02/house02-01.jpg",
       number: "4/4"
     },
-    
   ];
 
   // useEffect para criar um slideshow automático (conceito de ciclo de vida)
@@ -60,21 +59,26 @@ export default function Home() {
       {/* Head do Next.js para metadados da página */}
       <Head>
         <title>Stein Architekten</title>
-        <meta name="description" content="Stein Architekten - Contemporary Architecture" />
+        <meta name="description" content="Stein Architekten - by Robert Stein" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet" />
       </Head>
 
       {/* Container principal */}
       <div className="homepage">
-        {/* Header com logo e navegação */}
+        {/* Header com logo */}
         <header className="header">
           <h1 className="logo">STEIN ARCHITEKTEN</h1>
-          <nav className="nav">
-            <a href="#contact" className="nav-link">CONTACT</a>
-            <a href="#about" className="nav-link">ABOUT</a>
-          </nav>
         </header>
+
+        {/* Navegação centralizada */}
+        <nav className="center-nav">
+          <a href="#contact" className="nav-link">CONTACT</a>
+          <a href="#about" className="nav-link">ABOUT</a>
+        </nav>
 
         {/* Seção principal com imagem e informações do projeto */}
         <main className="main-content">
@@ -93,17 +97,17 @@ export default function Home() {
             <div className="overlay" />
           </div>
 
-          {/* Informações do projeto */}
+          {/* Informações do projeto - alinhadas à esquerda */}
           <div className="project-info">
             <span className="project-number">
               {projects[currentProject].number}
             </span>
             <h2 className="project-title">
               {projects[currentProject].name}
-              <span className="project-location">
-                , {projects[currentProject].location}
-              </span>
             </h2>
+            <span className="project-location">
+              {projects[currentProject].location}
+            </span>
           </div>
 
           {/* Indicadores de navegação */}
@@ -125,38 +129,42 @@ export default function Home() {
             height: 100vh;
             position: relative;
             overflow: hidden;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Archivo', sans-serif;
             color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 colunas */
           }
 
           .header {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 2rem;
+            left: 2rem;
             z-index: 10;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem;
           }
 
           .logo {
-            font-size: 1.5rem;
-            font-weight: 300;
-            letter-spacing: 2px;
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 1px;
             margin: 0;
+            color: white;
           }
 
-          .nav {
+          .center-nav {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: flex;
-            gap: 2rem;
+            gap: 3rem;
+            z-index: 10;
           }
 
           .nav-link {
             color: white;
             text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 400;
             letter-spacing: 1px;
             transition: opacity 0.3s ease;
           }
@@ -166,11 +174,14 @@ export default function Home() {
           }
 
           .main-content {
-            position: relative;
-            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
           }
 
           .image-container {
@@ -192,38 +203,42 @@ export default function Home() {
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.2);
             z-index: 2;
           }
 
           .project-info {
             position: relative;
             z-index: 5;
-            text-align: center;
-            max-width: 600px;
-            padding: 2rem;
+            text-align: left;
+            padding-left: 4rem;
+            max-width: 400px;
           }
 
           .project-number {
             display: block;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            opacity: 0.8;
+            font-size: 0.8rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+            letter-spacing: 1px;
           }
 
           .project-title {
-            font-size: 3rem;
-            font-weight: 300;
-            margin: 0;
-            letter-spacing: 2px;
-            line-height: 1.2;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: 1px;
+            line-height: 1.1;
           }
 
           .project-location {
             display: block;
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 300;
             opacity: 0.9;
+            letter-spacing: 1px;
+            text-transform: uppercase;
           }
 
           .indicators {
@@ -232,45 +247,57 @@ export default function Home() {
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             z-index: 5;
           }
 
           .indicator {
-            width: 12px;
-            height: 12px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            border: 2px solid white;
+            border: 1px solid white;
             background: transparent;
             cursor: pointer;
             transition: all 0.3s ease;
+            opacity: 0.6;
           }
 
           .indicator:hover,
           .indicator.active {
             background: white;
+            opacity: 1;
           }
 
-          /* Responsividade */
+          /* Responsive */
           @media (max-width: 768px) {
+            .homepage {
+              grid-template-columns: 1fr; /* Uma coluna no mobile */
+            }
+            
             .header {
-              padding: 1rem;
+              top: 1rem;
+              left: 1rem;
             }
             
             .logo {
-              font-size: 1.2rem;
+              font-size: 1rem;
             }
             
-            .nav {
-              gap: 1rem;
+            .center-nav {
+              top: 1rem;
+              right: 1rem;
+              left: auto;
+              transform: none;
+              gap: 1.5rem;
             }
             
             .project-title {
-              font-size: 2rem;
+              font-size: 1.8rem;
             }
             
             .project-info {
-              padding: 1rem;
+              padding-left: 1rem;
+              max-width: 300px;
             }
           }
         `}</style>
