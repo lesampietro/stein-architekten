@@ -237,24 +237,31 @@ export default function Home() {
 				)}
 
 				{isAboutOpen && (
-					<div className="contact-modal-overlay">
-						<div className="contact-modal">
+					<div className="about-modal-overlay">
+						<div className="about-modal">
 							<button 
-								className="close-button"
+								className="close-button-left"
 								onClick={() => setIsAboutOpen(false)}
-								aria-label="Close contact form"
+								aria-label="Close About modal"
 							>
 								×
 							</button>
-
-							<div className="contact-content">
-								<p className="contact-intro">
-									Morbi maximus sit amet turpis at facilisis.<br />
-									In et urna lorem: <a href="mailto:stein.architekten@outlook.com" className="email-link">stein.architekten@outlook.com</a>
+							<div className="about-content">
+								<h2 className="about-title">ABOUT STEIN ARCHITEKTEN</h2>
+								
+								<p className="about-text">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+									Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 								</p>
 
-								<p className="contact-subtitle">
-									Morbi maximus sit amet turpis at facilisis:
+								<p className="about-text">
+									Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+									laboris nisi ut aliquip ex ea commodo consequat.
+								</p>
+
+								<p className="about-text">
+									Duis aute irure dolor in reprehenderit in voluptate velit 
+									esse cillum dolore eu fugiat nulla pariatur.
 								</p>
 							</div>
 						</div>
@@ -428,12 +435,40 @@ export default function Home() {
 						height: 100vh;
 						background: white;
 						overflow-y: auto;
-						animation: slideIn 0.3s ease-out;
+						animation: slideInRight 0.3s ease-out;
 					}
 
-					@keyframes slideIn {
-						from {
+					@keyframes slideInRight {
+						from {	
 							transform: translateX(100%);
+						} 
+						to {
+							transform: translateX(0);
+						}
+					}
+
+					.about-modal-overlay {
+						position: fixed;
+						top: 0;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						z-index: 100;
+						display: flex;
+						justify-content: flex-start;
+					}
+
+					.about-modal {
+							width: 50%;
+							height: 100vh;
+							background: white;
+							overflow-y: auto;
+							animation: slideInLeft 0.3s ease-out;
+						}
+
+					@keyframes slideInLeft {
+						from {
+							transform: translateX(-100%);
 						}
 						to {
 							transform: translateX(0);
@@ -459,13 +494,54 @@ export default function Home() {
 						transition: opacity 0.3s ease;
 					}
 
-					.close-button:hover {
+					.close-button-left {
+						position: absolute;
+						top: 2rem;
+						left: 2rem;
+						background: none;
+						border: none;
+						font-size: 2.5rem;
+						color: #333;
+						cursor: pointer;
+						line-height: 1;
+						padding: 0;
+						width: 40px;
+						height: 40px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						transition: opacity 0.3s ease;
+					}
+					
+					.close-button:hover,
+					.close-button-left:hover {
 						opacity: 0.6;
 					}
-
+					
 					.contact-content {
 						padding: 4rem 3rem;
 						color: #666;
+					}
+
+					.about-content {
+						padding: 4rem 3rem;
+						color: #666;
+					}
+
+					.about-title {
+						padding-top: 2rem;
+						font-size: 1.5rem;
+						color: #333;
+						margin-bottom: 2rem;
+						font-weight: 600;
+						letter-spacing: 1px;
+					}
+
+					.about-text {
+						font-size: 1rem;
+						line-height: 1.8;
+						color: #666;
+						margin-bottom: 1.5rem;
 					}
 
 					.contact-intro {
