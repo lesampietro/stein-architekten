@@ -332,7 +332,8 @@ export default function Home() {
 						bottom: 0;
 						display: flex;
 						align-items: center;
-						justify-content: center;
+						justify-content: flex-start;
+						padding-left: 50%;
 					}
 
 					.image-container {
@@ -362,7 +363,7 @@ export default function Home() {
 						position: relative;
 						z-index: 8;
 						text-align: left;
-						padding-left: 0;
+						padding-left: 2rem;
 						max-width: 400px;
 					}
 
@@ -663,6 +664,7 @@ export default function Home() {
 						.main-content {
 							justify-content: flex-start;
 							align-items: center;
+							padding-left: 0;
 						}
 						
 						.project-info {
@@ -676,6 +678,10 @@ export default function Home() {
 						}
 
 						.contact-modal {
+							width: 100%;
+						}
+
+						.about-modal {
 							width: 100%;
 						}
 
