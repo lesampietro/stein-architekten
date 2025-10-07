@@ -247,21 +247,31 @@ export default function Home() {
 								×
 							</button>
 							<div className="about-content">
-								<h2 className="about-title">ABOUT STEIN ARCHITEKTEN</h2>
-								
-								<p className="about-text">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-									Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								<div className="about-image">
+									<Image
+										src="/images/robert.png"
+										alt="Robert Stein"
+										width={200}
+										height={200}
+										style={{ objectFit: 'cover'}}
+									/>
+								</div>
+								<div className="about-info">
+									<p className="about-company">STEIN ARCHITEKTEN</p>
+									<h3 className="about-name">Robert Stein</h3>
+									<p className="about-address">
+										Cronstettenstr. 34<br/>
+										603022 Frankfurt am Main
+									</p>
+								</div>
+								<p className="about-description">
+									Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+									Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 								</p>
-
-								<p className="about-text">
-									Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-									laboris nisi ut aliquip ex ea commodo consequat.
-								</p>
-
-								<p className="about-text">
-									Duis aute irure dolor in reprehenderit in voluptate velit 
-									esse cillum dolore eu fugiat nulla pariatur.
+								<p className="about-email">
+									<a href="mailto:info@steinarchitekten.de">
+										info@steinarchitekten.de
+									</a>
 								</p>
 							</div>
 						</div>
@@ -529,20 +539,63 @@ export default function Home() {
 						color: #666;
 					}
 
-					.about-title {
-						padding-top: 2rem;
-						font-size: 1.5rem;
-						color: #333;
+					.about-image {
+						margin-top: 2rem;
 						margin-bottom: 2rem;
-						font-weight: 600;
-						letter-spacing: 1px;
 					}
 
-					.about-text {
-						font-size: 1rem;
-						line-height: 1.8;
+					.about-image img {
+						border-radius: 0;
+					}
+
+					.about-info {
+						margin-bottom: 2.5rem;
+					}
+
+					.about-company {
+						font-size: 0.85rem;
+						color: #999;
+						margin-bottom: 0.5rem;
+						letter-spacing: 1px;
+						font-weight: 400;
+					}
+
+					.about-name {
+						font-size: 1.3rem;
+						color: #000;
+						margin: 0 0 1rem 0;
+						font-weight: 600;
+					}
+
+					.about-address {
+						font-size: 0.95rem;
 						color: #666;
+						line-height: 1.6;
+						margin: 0;
+					}
+
+					.about-description {
+						font-size: 0.95rem;
+						line-height: 1.7;
+						color: #999;
 						margin-bottom: 1.5rem;
+					}
+
+					.about-email {
+						margin-top: 2.5rem;
+						padding: 0;
+					}
+
+					.about-email a {
+						font-size: 1rem;
+						color: #000;
+						text-decoration: none;
+						border-bottom: 1px solid #000;
+						font-weight: 500;
+					}
+
+					.about-email a:hover {
+						opacity: 0.6;
 					}
 
 					.contact-intro {
