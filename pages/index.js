@@ -55,6 +55,14 @@ export default function Home() {
 		setCurrentProject(index);
 	};
 
+	const handleWheel = (e) => {
+		if (e.deltaY > 0) {
+			nextImage();
+		} else if (e.deltaY < 0) {
+			prevImage();
+		}
+	};
+
 	return (
 		<>
 			<Head>
@@ -98,7 +106,7 @@ export default function Home() {
 					</a>	
 				</nav>
 
-				<main className="main-content">
+				<main className="main-content" >
 					<div className="image-container">
 						<Image
 							src={projects[currentProject].image}
@@ -297,7 +305,7 @@ export default function Home() {
 					}
 
 					.header {
-						position: absolute;
+						position: fixed;
 						top: 2rem;
 						left: 2rem;
 						z-index: 10;
@@ -499,7 +507,7 @@ export default function Home() {
 						right: 2rem;
 						background: none;
 						border: none;
-						font-size: 2.5rem;
+						font-size: 2rem;
 						color: #333;
 						cursor: pointer;
 						line-height: 1;
@@ -518,7 +526,7 @@ export default function Home() {
 						left: 2rem;
 						background: none;
 						border: none;
-						font-size: 2.5rem;
+						font-size: 2rem;
 						color: #333;
 						cursor: pointer;
 						line-height: 1;

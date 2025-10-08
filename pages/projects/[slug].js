@@ -93,9 +93,11 @@ export default function ProjectPage() {
 
 			<div className="project-page" onWheel={handleWheel}>
 				<header className="project-header">
-					<Link href="/" className="logo">
+					<h1 className="logo">
+						<Link href="/" className="logo">
 						STEIN ARCHITEKTEN
-					</Link>
+						</Link>
+					</h1>
 
 					<button 
 						className="close-project"
@@ -186,55 +188,45 @@ export default function ProjectPage() {
 				<style jsx>{`
 					.project-page {
 						min-height: 100vh;
+						position: relative;						
+						overflow: hidden;
 						background: white;
 						font-family: 'Archivo', sans-serif;
 					}
 
 					.project-header {
 						position: fixed;
-						top: 0;
-						left: 0;
-						right: 0;
-						height: 80px;
+						top: 2rem;
+						left: 2rem;
+						right: 2rem;
 						background: white;
 						display: flex;
 						align-items: center;
 						justify-content: space-between;
-						padding: 0 2rem;
-						z-index: 50;
+						padding: 0;
+						z-index: 10;
 					}
 
 					.logo {
 						font-size: 1.5rem;
-						font-weight: 500;
+						font-weight: 400;
 						letter-spacing: 1px;
-						color: #000;
-						text-decoration: none;
-						transition: opacity 0.3s ease;
+						margin: 0;
+						color: black;
 					}
 
 					.logo:hover {
 						opacity: 0.7;
 					}
 
-					.header-nav {
-						position: absolute;
-						left: 50%;
-						transform: translateX(-50%);
-						display: flex;
-						gap: 3rem;
-					}
-
 					.close-project {
 						background: none;
 						border: none;
-						font-size: 2.5rem;
+						font-size: 2rem;
 						color: #000;
 						cursor: pointer;
-						line-height: 1;
+						line-height: 0;
 						padding: 0;
-						width: 40px;
-						height: 40px;
 						display: flex;
 						align-items: center;
 						justify-content: center;
@@ -356,8 +348,8 @@ export default function ProjectPage() {
 
 					.close-button {
 						position: absolute;
-						top: 1.5rem;
-						right: 1.5rem;
+						top: 2rem;
+						right: 2rem;
 						background: none;
 						border: none;
 						font-size: 2rem;
@@ -365,8 +357,8 @@ export default function ProjectPage() {
 						cursor: pointer;
 						line-height: 1;
 						padding: 0;
-						width: 35px;
-						height: 35px;
+						width: 40px;
+						height: 40px;
 						display: flex;
 						align-items: center;
 						justify-content: center;
@@ -431,17 +423,19 @@ export default function ProjectPage() {
 						font-weight: 500;
 					}
 
-					@media (max-width: 768px) {
+										@media (max-width: 768px) {
 						.project-header {
 							padding: 0 1rem;
 							height: 70px;
 						}
 
 						.logo {
-							font-size: 1rem;
+							font-size: 1.5rem;
 						}
 
 						.header-nav {
+							position: static;
+							transform: none;
 							gap: 1rem;
 						}
 
@@ -451,12 +445,15 @@ export default function ProjectPage() {
 
 						.project-gallery {
 							margin-top: 70px;
-							padding: 1.5rem 0;
+							height: calc(100vh - 180px);
 						}
 
-						.gallery-item {
+						.gallery-container {
 							padding: 0 1rem;
-							margin-bottom: 1.5rem;
+						}
+
+						.gallery-nav {
+							width: 30%;
 						}
 
 						.footer-content {
