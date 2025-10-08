@@ -149,37 +149,34 @@ export default function ProjectPage() {
 
 				{isAboutProjectOpen && (
 					<div className="about-project-modal-overlay">
-						<div className="about-project-modal">
-							<button 
-								className="close-button"
-								onClick={() => setIsAboutProjectOpen(false)}
-								aria-label="Close"
-							>
-								×
-							</button>
+						<button 
+							className="close-button"
+							onClick={() => setIsAboutProjectOpen(false)}
+							aria-label="Close"
+						>
+							×
+						</button>
 
-							<div className="about-project-content">
-								<h2 className="modal-title">{project.name}</h2>
-								<p className="modal-location">{project.location}</p>
+						<div className="about-project-content">
+							<h2 className="modal-title">{project.name}</h2>
+							<p className="modal-location">{project.location}</p>
 
-								<div className="modal-description">
-									<p>{project.description}</p>
-									<p>{project.description}</p>
+							<div className="modal-description">
+								<p>{project.description}</p>
+							</div>
+
+							<div className="modal-details">
+								<div className="detail-item">
+									<span className="detail-label">Jahr</span>
+									<span className="detail-value">2023</span>
 								</div>
-
-								<div className="modal-details">
-									<div className="detail-item">
-										<span className="detail-label">Year</span>
-										<span className="detail-value">2023</span>
-									</div>
-									<div className="detail-item">
-										<span className="detail-label">Area</span>
-										<span className="detail-value">450 m²</span>
-									</div>
-									<div className="detail-item">
-										<span className="detail-label">Type</span>
-										<span className="detail-value">Residential</span>
-									</div>
+								<div className="detail-item">
+									<span className="detail-label">Fläche</span>
+									<span className="detail-value">450 m²</span>
+								</div>
+								<div className="detail-item">
+									<span className="detail-label">Typ</span>
+									<span className="detail-value">Wohnung</span>
 								</div>
 							</div>
 						</div>
@@ -285,10 +282,6 @@ export default function ProjectPage() {
 						transition: background 0.3s ease;
 					}
 
-					.gallery-nav:hover {
-						background: rgba(0, 0, 0, 0.02);
-					}
-
 					.gallery-nav-left {
 						left: 0;
 					}
@@ -348,41 +341,17 @@ export default function ProjectPage() {
 						opacity: 0.6;
 					}
 
-
 					.about-project-modal-overlay {
 						position: fixed;
 						top: 0;
 						left: 0;
 						right: 0;
 						bottom: 0;
-						background: rgba(0, 0, 0, 0.7);
+						background: white;
 						z-index: 100;
 						display: flex;
 						align-items: center;
 						justify-content: center;
-						padding: 2rem;
-					}
-
-					.about-project-modal {
-						background: white;
-						max-width: 600px;
-						width: 100%;
-						max-height: 80vh;
-						overflow-y: auto;
-						position: relative;
-						border-radius: 8px;
-						animation: modalFadeIn 0.3s ease-out;
-					}
-
-					@keyframes modalFadeIn {
-						from {
-							opacity: 0;
-							transform: scale(0.9);
-						}
-						to {
-							opacity: 1;
-							transform: scale(1);
-						}
 					}
 
 					.close-button {
