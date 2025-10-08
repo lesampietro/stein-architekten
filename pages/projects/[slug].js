@@ -195,7 +195,7 @@ export default function ProjectPage() {
 					}
 
 					.project-header {
-						position: fixed;
+						position: absolute;
 						top: 2rem;
 						left: 2rem;
 						right: 2rem;
@@ -326,7 +326,6 @@ export default function ProjectPage() {
 						transition: opacity 0.3s ease;
 						font-family: 'Archivo', sans-serif;
 						text-decoration: none;
-						// text-decoration: underline;
 					}
 
 					.about-project-link:hover {
@@ -334,8 +333,8 @@ export default function ProjectPage() {
 					}
 
 					.about-project-modal-overlay {
-						position: fixed;
-						top: 0;
+						position: absolute;
+						top: -3;
 						left: 0;
 						right: 0;
 						bottom: 0;
@@ -357,9 +356,6 @@ export default function ProjectPage() {
 						cursor: pointer;
 						line-height: 1;
 						padding: 0;
-						width: 40px;
-						height: 40px;
-						display: flex;
 						align-items: center;
 						justify-content: center;
 						transition: opacity 0.3s ease;
@@ -423,24 +419,16 @@ export default function ProjectPage() {
 						font-weight: 500;
 					}
 
-										@media (max-width: 768px) {
+					@media (max-width: 768px) {
 						.project-header {
-							padding: 0 1rem;
-							height: 70px;
+							padding: 0;
+							top: 1rem;
+							left: 1rem;
+							right: 1rem;
 						}
 
 						.logo {
 							font-size: 1.5rem;
-						}
-
-						.header-nav {
-							position: static;
-							transform: none;
-							gap: 1rem;
-						}
-
-						.nav-link {
-							font-size: 0.8rem;
 						}
 
 						.project-gallery {
@@ -468,6 +456,11 @@ export default function ProjectPage() {
 
 						.modal-title {
 							font-size: 1.5rem;
+						}
+
+						.close-button {
+							top: 1rem;
+							right: 1rem;
 						}
 					}
 				`}</style>
