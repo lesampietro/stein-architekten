@@ -8,6 +8,7 @@ export default function ProjectPage() {
 	const router = useRouter();
 	const { slug } = router.query;
 	const [isAboutProjectOpen, setIsAboutProjectOpen] = useState(false);
+	const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
 	// Dados do projeto (em produção, viriam de uma API ou CMS)
 	const projectData = {
@@ -63,6 +64,23 @@ export default function ProjectPage() {
 
 	const project = projectData[slug] || projectData['haus-g'];
 
+	const nextImage = () => {
+		setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
+	};
+
+	const prevImage = () => {
+		setCurrentImageIndex((prev) => 
+			prev === 0 ? project.images.length - 1 : prev - 1);
+	};
+
+	const handleWheel = (e) => {
+		if (e.deltaY > 0) {
+			nextImage();
+		} else if (e.deltaY < 0) {
+			prevImage();
+		}
+	};
+
 	return (
 		<>
 			<Head>
@@ -73,7 +91,7 @@ export default function ProjectPage() {
 				<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet" />
 			</Head>
 
-			<div className="project-page">
+			<div className="project-page" onWheel={handleWheel}>
 				<header className="project-header">
 					<Link href="/" className="logo">
 						STEIN ARCHITEKTEN
@@ -89,18 +107,28 @@ export default function ProjectPage() {
 				</header>
 
 				<main className="project-gallery">
-					{project.images.map((image, index) => (
-						<div key={index} className="gallery-item">
+					<button 
+						className="gallery-nav gallery-nav-left"
+						onClick={prevImage}
+						aria-label="Previous image"
+					/>
+					<div className="gallery-container">
+						<div className="gallery-item">
 							<Image
-								src={image}
-								alt={`${project.name} - Image ${index + 1}`}
-								width={1200}
-								height={800}
+								src={project.images[currentImageIndex]}
+								alt={`${project.name} - Image ${currentImageIndex + 1}`}
+								width={1400}
+								height={900}
 								style={{ width: '100%', height: 'auto' }}
-								priority={index === 0}
+								priority
 							/>
 						</div>
-					))}
+					</div>
+					<button 
+						className="gallery-nav gallery-nav-right"
+						onClick={nextImage}
+						aria-label="Next image"
+					/>
 				</main>
 
 				<footer className="project-footer">
@@ -111,7 +139,7 @@ export default function ProjectPage() {
 						</div>
 
 						<button 
-							className="about-project-btn"
+							className="about-project-link"
 							onClick={() => setIsAboutProjectOpen(true)}
 						>
 							ABOUT THIS PROJECT
@@ -161,7 +189,7 @@ export default function ProjectPage() {
 				<style jsx>{`
 					.project-page {
 						min-height: 100vh;
-						background: #f5f5f5;
+						background: white;
 						font-family: 'Archivo', sans-serif;
 					}
 
@@ -177,11 +205,10 @@ export default function ProjectPage() {
 						justify-content: space-between;
 						padding: 0 2rem;
 						z-index: 50;
-						box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 					}
 
 					.logo {
-						font-size: 1.2rem;
+						font-size: 1.5rem;
 						font-weight: 500;
 						letter-spacing: 1px;
 						color: #000;
@@ -190,24 +217,15 @@ export default function ProjectPage() {
 					}
 
 					.logo:hover {
-						opacity: 0.6;
+						opacity: 0.7;
 					}
 
 					.header-nav {
+						position: absolute;
+						left: 50%;
+						transform: translateX(-50%);
 						display: flex;
-						gap: 2rem;
-					}
-
-					.nav-link {
-						color: #000;
-						text-decoration: none;
-						font-size: 0.9rem;
-						letter-spacing: 1px;
-						transition: opacity 0.3s ease;
-					}
-
-					.nav-link:hover {
-						opacity: 0.6;
+						gap: 3rem;
 					}
 
 					.close-project {
@@ -232,25 +250,61 @@ export default function ProjectPage() {
 
 					.project-gallery {
 						margin-top: 80px;
-						padding: 3rem 0;
+						height: calc(100vh - 160px);
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						position: relative;
+					}
+
+					.gallery-container {
+						width: 100%;
 						max-width: 1400px;
-						margin-left: auto;
-						margin-right: auto;
+						padding: 0 2rem;
 					}
 
 					.gallery-item {
-						margin-bottom: 2rem;
-						padding: 0 2rem;
+						display: flex;
+						justify-content: center;
+						align-items: center;
 					}
 
 					.gallery-item img {
 						display: block;
 					}
+						
+					.gallery-nav {
+						position: absolute;
+						top: 0;
+						bottom: 80px;
+						width: 20%;
+						background: transparent;
+						border: none;
+						cursor: pointer;
+						z-index: 10;
+						transition: background 0.3s ease;
+					}
 
+					.gallery-nav:hover {
+						background: rgba(0, 0, 0, 0.02);
+					}
+
+					.gallery-nav-left {
+						left: 0;
+					}
+
+					.gallery-nav-right {
+						right: 0;
+					}
+						
 					.project-footer {
+						position: fixed;
+						bottom: 0;
+						left: 0;
+						right: 0;
 						background: white;
 						padding: 2rem;
-						box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+						z-index: 50;
 					}
 
 					.footer-content {
@@ -276,22 +330,24 @@ export default function ProjectPage() {
 						letter-spacing: 1px;
 					}
 
-					.about-project-btn {
-						background: #000;
-						color: white;
+					.about-project-link {
+						background: none;
+						color: #000;
 						border: none;
-						padding: 1rem 2rem;
+						padding: 0;
 						font-size: 0.9rem;
-						font-weight: 500;
-						letter-spacing: 1px;
+						font-weight: 400;
 						cursor: pointer;
-						transition: background 0.3s ease;
+						transition: opacity 0.3s ease;
 						font-family: 'Archivo', sans-serif;
+						text-decoration: none;
+						// text-decoration: underline;
 					}
 
-					.about-project-btn:hover {
-						background: #333;
+					.about-project-link:hover {
+						opacity: 0.6;
 					}
+
 
 					.about-project-modal-overlay {
 						position: fixed;

@@ -21,7 +21,7 @@ export default function Home() {
 			id: 2,
 			name: "HAUS M",
 			location: "MÜNCHEN, DEUTSCHLAND", 
-			image: "/images/haus-02/house02-01.jpg",
+			image: "/images/haus-02/01.jpg",
 			number: "2/4",
 			slug: "haus-m"
 		},
@@ -29,7 +29,7 @@ export default function Home() {
 			id: 3,
 			name: "HAUS G",
 			location: "GIESSEN, DEUTSCHLAND",
-			image: "/images/haus-01/house01-02.jpg",
+			image: "/images/haus-01/02.jpg",
 			number: "3/4",
 			slug: "haus-g"
 		},
@@ -37,7 +37,7 @@ export default function Home() {
 			id: 4,
 			name: "HAUS M",
 			location: "MÜNCHEN, DEUTSCHLAND", 
-			image: "/images/haus-02/house02-01.jpg",
+			image: "/images/haus-02/02.jpg",
 			number: "4/4",
 			slug: "haus-m"
 		},
