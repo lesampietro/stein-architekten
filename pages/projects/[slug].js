@@ -1,4 +1,3 @@
-// pages/projects/[slug].js - Página individual de cada projeto
 import { useState } from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
@@ -17,9 +16,25 @@ export default function ProjectPage() {
 			location: 'GIESSEN, DEUTSCHLAND',
 			images: [
 				'/images/haus-01/01.jpg',
-				'/images/haus-01/house01-02.jpg',
-				'/images/haus-01/01.jpg',
-				'/images/haus-01/house01-02.jpg',
+				'/images/haus-01/02.jpg',
+				'/images/haus-01/03.jpg',
+				'/images/haus-01/04.jpg',
+				'/images/haus-01/05.jpg',
+				'/images/haus-01/06.jpg',
+				'/images/haus-01/07.jpg',
+				'/images/haus-01/08.jpg',
+				'/images/haus-01/09.jpg',
+				'/images/haus-01/10.jpg',
+				'/images/haus-01/11.jpg',
+				'/images/haus-01/12.jpg',
+				'/images/haus-01/13.jpg',
+				'/images/haus-01/14.jpg',
+				'/images/haus-01/15.jpg',
+				'/images/haus-01/16.jpg',
+				'/images/haus-01/17.jpg',
+				'/images/haus-01/18.jpg',
+				'/images/haus-01/19.jpg',
+				'/images/haus-01/20.jpg',
 			],
 			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 		},
@@ -27,9 +42,20 @@ export default function ProjectPage() {
 			name: 'HAUS M',
 			location: 'MÜNCHEN, DEUTSCHLAND',
 			images: [
-				'/images/haus-02/house02-01.jpg',
-				'/images/haus-02/house02-01.jpg',
-				'/images/haus-02/house02-01.jpg',
+				'/images/haus-02/01.jpg',
+				'/images/haus-02/02.jpg',
+				'/images/haus-02/03.jpg',
+				'/images/haus-02/04.jpg',
+				'/images/haus-02/05.jpg',
+				'/images/haus-02/06.jpg',
+				'/images/haus-02/07.jpg',
+				'/images/haus-02/08.jpg',
+				'/images/haus-02/09.jpg',
+				'/images/haus-02/10.jpg',
+				'/images/haus-02/11.jpg',
+				'/images/haus-02/12.jpg',
+				'/images/haus-02/13.jpg',
+				'/images/haus-02/14.jpg',
 			],
 			description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
 		}
@@ -48,16 +74,10 @@ export default function ProjectPage() {
 			</Head>
 
 			<div className="project-page">
-				{/* Header */}
 				<header className="project-header">
 					<Link href="/" className="logo">
 						STEIN ARCHITEKTEN
 					</Link>
-
-					<nav className="header-nav">
-						<Link href="/#about" className="nav-link">ABOUT</Link>
-						<Link href="/#contact" className="nav-link">CONTACT</Link>
-					</nav>
 
 					<button 
 						className="close-project"
@@ -68,7 +88,6 @@ export default function ProjectPage() {
 					</button>
 				</header>
 
-				{/* Galeria de imagens */}
 				<main className="project-gallery">
 					{project.images.map((image, index) => (
 						<div key={index} className="gallery-item">
@@ -84,7 +103,6 @@ export default function ProjectPage() {
 					))}
 				</main>
 
-				{/* Footer com informações do projeto */}
 				<footer className="project-footer">
 					<div className="footer-content">
 						<div className="project-title-footer">
@@ -101,7 +119,6 @@ export default function ProjectPage() {
 					</div>
 				</footer>
 
-				{/* Modal About This Project */}
 				{isAboutProjectOpen && (
 					<div className="about-project-modal-overlay">
 						<div className="about-project-modal">
@@ -438,7 +455,6 @@ export default function ProjectPage() {
 }
 
 export async function getStaticPaths() {
-	// Define quais rotas devem ser geradas no build
 	return {
 		paths: [
 			{ params: { slug: 'haus-g' } },

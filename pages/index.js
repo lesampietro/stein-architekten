@@ -256,7 +256,7 @@ export default function Home() {
 							<div className="about-content">
 								<div className="about-image">
 									<Image
-										src="/images/robert.png"
+										src="/images/robert-stein.png"
 										alt="Robert Stein"
 										width={200}
 										height={200}
