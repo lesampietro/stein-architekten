@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
+import Link from 'next/link';
 
 export default function Home() {
 	const [currentProject, setCurrentProject] = useState(0);
@@ -13,28 +14,32 @@ export default function Home() {
 			name: "HAUS G",
 			location: "GIESSEN, DEUTSCHLAND",
 			image: "/images/haus-01/01.jpg",
-			number: "1/4"
+			number: "1/4",
+			slug: "haus-g"
 		},
 		{
 			id: 2,
 			name: "HAUS M",
 			location: "MÜNCHEN, DEUTSCHLAND", 
 			image: "/images/haus-02/house02-01.jpg",
-			number: "2/4"
+			number: "2/4",
+			slug: "haus-m"
 		},
 		{
 			id: 3,
 			name: "HAUS G",
 			location: "GIESSEN, DEUTSCHLAND",
 			image: "/images/haus-01/house01-02.jpg",
-			number: "3/4"
+			number: "3/4",
+			slug: "haus-g"
 		},
 		{
 			id: 4,
 			name: "HAUS M",
 			location: "MÜNCHEN, DEUTSCHLAND", 
 			image: "/images/haus-02/house02-01.jpg",
-			number: "4/4"
+			number: "4/4",
+			slug: "haus-m"
 		},
 	];
 
@@ -111,9 +116,11 @@ export default function Home() {
 						<span className="project-number">
 							{projects[currentProject].number}
 						</span>
-						<h2 className="project-title">
-							{projects[currentProject].name}
-						</h2>
+						<Link href={`/projects/${projects[currentProject].slug}`}>
+							<h2 className="project-title">
+								{projects[currentProject].name}
+							</h2>
+						</Link>
 						<span className="project-location">
 							{projects[currentProject].location}
 						</span>
