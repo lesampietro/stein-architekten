@@ -9,8 +9,8 @@ export default function ProjectPage() {
 	const { slug } = router.query;
 	const [isAboutProjectOpen, setIsAboutProjectOpen] = useState(false);
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);
+	const [slideDirection, setSlideDirection] = useState('right');
 
-	// Dados do projeto (em produção, viriam de uma API ou CMS)
 	const projectData = {
 		'haus-g': {
 			name: 'HAUS G',
@@ -65,10 +65,12 @@ export default function ProjectPage() {
 	const project = projectData[slug] || projectData['haus-g'];
 
 	const nextImage = () => {
+		setSlideDirection('right');
 		setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
 	};
 
 	const prevImage = () => {
+		setSlideDirection('left');
 		setCurrentImageIndex((prev) => 
 			prev === 0 ? project.images.length - 1 : prev - 1);
 	};
@@ -115,7 +117,7 @@ export default function ProjectPage() {
 						aria-label="Previous image"
 					/>
 					<div className="gallery-container">
-						<div className="gallery-item">
+						<div className={`gallery-item slide-${slideDirection}`} key={currentImageIndex}>
 							<Image
 								src={project.images[currentImageIndex]}
 								alt={`${project.name} - Image ${currentImageIndex + 1}`}
@@ -262,6 +264,32 @@ export default function ProjectPage() {
 						display: block;
 					}
 						
+					@keyframes slideInRight {
+						from {
+							transform: translateX(100px);
+						}
+						to {
+							transform: translateX(0);
+						}
+					}
+
+					@keyframes slideInLeft {
+						from {
+							transform: translateX(-100px);
+						}
+						to {
+							transform: translateX(0);
+						}
+					}
+
+					.slide-right {
+						animation: slideInRight 0.5s ease-out;
+					}
+
+					.slide-left {
+						animation: slideInLeft 0.5s ease-out;
+					}
+
 					.gallery-nav {
 						position: absolute;
 						top: 0;
@@ -269,17 +297,19 @@ export default function ProjectPage() {
 						width: 20%;
 						background: transparent;
 						border: none;
-						cursor: pointer;
+						// cursor: pointer;
 						z-index: 10;
 						transition: background 0.3s ease;
 					}
 
 					.gallery-nav-left {
 						left: 0;
+						cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>') 16 16, auto;
 					}
 
 					.gallery-nav-right {
 						right: 0;
+						cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>') 16 16, auto;
 					}
 						
 					.project-footer {

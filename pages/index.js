@@ -55,13 +55,6 @@ export default function Home() {
 		setCurrentProject(index);
 	};
 
-	const handleWheel = (e) => {
-		if (e.deltaY > 0) {
-			nextImage();
-		} else if (e.deltaY < 0) {
-			prevImage();
-		}
-	};
 
 	return (
 		<>
