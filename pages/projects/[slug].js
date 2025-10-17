@@ -203,7 +203,7 @@ export default function ProjectPage() {
 						top: 2rem;
 						left: 2rem;
 						right: 2rem;
-						background: white;
+						background: rgba(0, 0, 0, 0);
 						display: flex;
 						align-items: center;
 						justify-content: space-between;
@@ -500,6 +500,10 @@ export default function ProjectPage() {
 							flex-direction: column;
 							gap: 1.5rem;
 							align-items: flex-start;
+						}
+
+						.about-project-modal {
+							width: 100%;
 						}
 
 						.about-project-content {
