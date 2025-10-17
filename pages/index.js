@@ -113,29 +113,35 @@ export default function Home() {
 					</a>	
 				</nav>
 
+
 				<main className="main-content" >
 				<button 
 						className="gallery-nav gallery-nav-left"
 						onClick={prevImage}
 						aria-label="Previous project"
 					/>
-					<div className="image-container">
-						<Image
-							src={projects[currentProject].image}
-							alt={projects[currentProject].name}
-							fill
-							priority
-							className="background-image"
-							style={{ objectFit: 'cover' }}
-						/>
-						
-						<div className="overlay" />
-					</div>
+					<Link href={`/projects/${projects[currentProject].slug}`}>
+						<div className="image-container clickable-area">
+							<Image
+								src={projects[currentProject].image}
+								alt={projects[currentProject].name}
+								fill
+								priority
+								className="background-image"
+								style={{ objectFit: 'cover' }}
+							/>
+							
+							<div className="overlay" />
+						</div>
+					</Link>
 
 					<div className="project-info">
-						<span className="project-number">
-							{projects[currentProject].number}
-						</span>
+						<Link href={`/projects/${projects[currentProject].slug}`} className="project-number-link">
+							<span className="project-number">
+								<span className="number-text">{projects[currentProject].number}</span>
+								{/* <span className="hover-text">VIEW PROJECT</span> */}
+							</span>
+						</Link>
 						<Link href={`/projects/${projects[currentProject].slug}`}>
 							<h2 className="project-title">
 								{projects[currentProject].name}
@@ -475,12 +481,12 @@ export default function Home() {
 
 					.gallery-nav-left {
 						left: 0;
-						cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>') 16 16, auto;
+						cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>') 16 16, auto;
 					}
 
 					.gallery-nav-right {
 						right: 0;
-						cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>') 16 16, auto;
+						cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>') 16 16, auto;
 					}
 
 					.contact-modal-overlay {
