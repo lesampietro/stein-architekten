@@ -55,6 +55,21 @@ export default function Home() {
 		setCurrentProject(index);
 	};
 
+	const nextImage = () => {
+		setCurrentProject((prev) => (prev + 1) % projects.length);
+	};
+
+	const prevImage = () => {
+		setCurrentProject((prev) => prev === 0 ? projects.length - 1 : prev - 1);
+	};
+
+	const handleWheel = (e) => {
+		if (e.deltaY > 0) {
+			nextImage();
+		} else if (e.deltaY < 0) {
+			prevImage();
+		}
+	};
 
 	return (
 		<>
@@ -67,7 +82,7 @@ export default function Home() {
 				<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet" />
 			</Head>
 
-			<div className="homepage">
+			<div className="homepage" onWheel={handleWheel}>
 				<header className="header">
 					<h1 className="logo">STEIN ARCHITEKTEN</h1>
 				</header>
