@@ -299,7 +299,6 @@ export default function ProjectPage() {
 						width: 20%;
 						background: transparent;
 						border: none;
-						// cursor: pointer;
 						z-index: 10;
 						transition: background 0.3s ease;
 					}

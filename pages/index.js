@@ -114,6 +114,11 @@ export default function Home() {
 				</nav>
 
 				<main className="main-content" >
+				<button 
+						className="gallery-nav gallery-nav-left"
+						onClick={prevImage}
+						aria-label="Previous project"
+					/>
 					<div className="image-container">
 						<Image
 							src={projects[currentProject].image}
@@ -151,6 +156,11 @@ export default function Home() {
 							/>
 						))}
 					</div>
+					<button 
+						className="gallery-nav gallery-nav-right"
+						onClick={nextImage}
+						aria-label="Next project"
+					/>
 				</main>
 
 				{isContactOpen && (
@@ -342,6 +352,17 @@ export default function Home() {
 						z-index: 15;
 					}
 
+					.gallery-nav {
+						position: absolute;
+						top: 0;
+						bottom: 80px;
+						width: 20%;
+						background: transparent;
+						border: none;
+						z-index: 10;
+						transition: background 0.3s ease;
+					}
+
 					.nav-link {
 						color: white;
 						text-decoration: none;
@@ -450,6 +471,16 @@ export default function Home() {
 					.indicator.active {
 						background: white;
 						opacity: 1;
+					}
+
+					.gallery-nav-left {
+						left: 0;
+						cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>') 16 16, auto;
+					}
+
+					.gallery-nav-right {
+						right: 0;
+						cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>') 16 16, auto;
 					}
 
 					.contact-modal-overlay {
