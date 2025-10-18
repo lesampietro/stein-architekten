@@ -7,6 +7,7 @@ export default function Home() {
 	const [currentProject, setCurrentProject] = useState(0);
 	const [isContactOpen, setIsContactOpen] = useState(false);
 	const [isAboutOpen, setIsAboutOpen] = useState(false);
+	const [isNumberHovered, setIsNumberHovered] = useState(false);
 	
 	const projects = [
 		{
@@ -113,9 +114,8 @@ export default function Home() {
 					</a>	
 				</nav>
 
-
 				<main className="main-content" >
-				<button 
+					<button 
 						className="gallery-nav gallery-nav-left"
 						onClick={prevImage}
 						aria-label="Previous project"
@@ -136,11 +136,19 @@ export default function Home() {
 					</Link>
 
 					<div className="project-info">
-						<Link href={`/projects/${projects[currentProject].slug}`} className="project-number-link">
-							<span className="project-number">
-								<span className="number-text">{projects[currentProject].number}</span>
-								{/* <span className="hover-text">VIEW PROJECT</span> */}
-							</span>
+						<Link 
+							href={`/projects/${projects[currentProject].slug}`}
+							onMouseEnter={() => setIsNumberHovered(true)}
+							onMouseLeave={() => setIsNumberHovered(false)}
+						>
+							<div className="project-number-wrapper">
+								<span className="project-number-default" style={{ opacity: isNumberHovered ? 0 : 0.9 }}>
+									{projects[currentProject].number}
+								</span>
+								<span className="project-number-hover" style={{ opacity: isNumberHovered ? 0.9 : 0 }}>
+									VIEW PROJECT
+								</span>
+							</div>
 						</Link>
 						<Link href={`/projects/${projects[currentProject].slug}`}>
 							<h2 className="project-title">
@@ -402,6 +410,16 @@ export default function Home() {
 						right: 0;
 						bottom: 0;
 						z-index: 1;
+						pointer-events: all;
+					}
+
+					.clickable-area {
+						cursor: pointer;
+						transition: opacity 0.3s ease;
+					}
+
+					.clickable-area:hover {
+						opacity: 0.95;
 					}
 
 					.background-image {
@@ -420,19 +438,49 @@ export default function Home() {
 
 					.project-info {
 						position: relative;
-						z-index: 8;
+						z-index: 20;
 						text-align: left;
 						padding-left: 2rem;
 						max-width: 400px;
 					}
 
-					.project-number {
+					.project-info > a {
+						text-decoration: none;
+						color: white;
+						position: relative;
+						z-index: 25;
+					}
+
+					.project-number-wrapper {
 						display: block;
 						font-size: 0.8rem;
 						font-weight: 300;
 						margin-bottom: 0.5rem;
-						opacity: 0.9;
 						letter-spacing: 1px;
+						position: relative;
+						height: 1.2em;
+					}
+
+					.project-number-default,
+					.project-number-hover {
+						display: block;
+						opacity: 0.9;
+						transition: opacity 0.3s ease;
+					}
+
+					.project-number-hover {
+						position: absolute;
+						top: 0;
+						left: 0;
+						opacity: 0;
+					}
+
+					.project-info > a:hover .project-number-default {
+						opacity: 0;
+					}
+
+					.project-info > a:hover .project-number-hover {
+						opacity: 0.9;
 					}
 
 					.project-title {
