@@ -127,6 +127,9 @@ export default function ProjectPage() {
 								priority
 							/>
 						</div>
+						<div className="image-counter">
+							{currentImageIndex + 1}/{project.images.length}
+						</div>
 					</div>
 					<button 
 						className="gallery-nav gallery-nav-right"
@@ -254,6 +257,7 @@ export default function ProjectPage() {
 						width: 100%;
 						max-width: 1400px;
 						padding: 0 2rem;
+						position: relative;
 					}
 
 					.gallery-item {
@@ -264,6 +268,15 @@ export default function ProjectPage() {
 
 					.gallery-item img {
 						display: block;
+					}
+
+					.image-counter {
+						text-align: center;
+						margin-top: 1.5rem;
+						font-size: 0.85rem;
+						color: #666;
+						letter-spacing: 1px;
+						font-weight: 300;
 					}
 						
 					@keyframes slideInRight {
@@ -362,19 +375,6 @@ export default function ProjectPage() {
 					.about-project-link:hover {
 						opacity: 0.6;
 					}
-
-					/*.about-project-modal-overlay-full {
-							position: absolute;
-							top: -3;
-							left: 0;
-							right: 0;
-							bottom: 0;
-							background: white;
-							z-index: 100;
-							display: flex;
-							align-items: center;
-							justify-content: center;
-					}*/
 						
 					.about-project-modal {
 						width: 50%;
@@ -491,6 +491,11 @@ export default function ProjectPage() {
 							padding: 0 1rem;
 						}
 
+						.image-counter {
+							margin-top: 1rem;
+							font-size: 0.8rem;
+						}
+
 						.gallery-nav {
 							width: 30%;
 						}
@@ -535,7 +540,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-	// Aqui você buscaria os dados do projeto de uma API
 	return {
 		props: {
 			slug: params.slug
