@@ -333,10 +333,13 @@ export default function Home() {
 						color: white;
 						display: grid;
 						grid-template-columns: 1fr 1fr 1fr 1fr;
+						min-height: 500px;
 					}
 
 					.header {
 						position: fixed;
+						flex: 1;
+						display: flex;
 						top: 2rem;
 						left: 2rem;
 						z-index: 10;
@@ -854,6 +857,13 @@ export default function Home() {
 							right: 1rem;
 						}
 					}
+
+					@media (max-height: 200px) {
+						.header {
+							top: 1rem;
+							left: 1rem;
+					}
+
 				`}</style>
 			</div>
 		</>

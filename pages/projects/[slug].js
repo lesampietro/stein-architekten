@@ -194,11 +194,14 @@ export default function ProjectPage() {
 
 				<style jsx>{`
 					.project-page {
-						min-height: 100vh;
 						position: relative;						
-						overflow: hidden;
 						background: white;
 						font-family: 'Archivo', sans-serif;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						min-height: 100vh;
+						overflow: hidden;
 					}
 
 					.project-header {
@@ -206,14 +209,14 @@ export default function ProjectPage() {
 						top: 2rem;
 						left: 2rem;
 						right: 2rem;
-						background: rgba(0, 0, 0, 0);
+						background: white;
 						display: flex;
 						align-items: center;
 						justify-content: space-between;
 						padding: 0;
 						z-index: 10;
 					}
-
+					
 					.logo {
 						font-size: 1.5rem;
 						font-weight: 400;
@@ -221,7 +224,7 @@ export default function ProjectPage() {
 						margin: 0;
 						color: black;
 					}
-
+					
 					.logo:hover {
 						opacity: 0.7;
 					}
@@ -245,38 +248,50 @@ export default function ProjectPage() {
 					}
 
 					.project-gallery {
-						margin-top: 80px;
-						height: calc(100vh - 160px);
+						flex: 1;
 						display: flex;
+						margin-top: 80px;
 						align-items: center;
 						justify-content: center;
 						position: relative;
-					}
-
+						overflow: hidden;
+						}
+						
 					.gallery-container {
 						width: 100%;
-						max-width: 1400px;
-						padding: 0 2rem;
+						max-width: 1200px;
+						padding: 0rem 2rem 0rem 2rem;
 						position: relative;
 					}
-
+						
 					.gallery-item {
 						display: flex;
 						justify-content: center;
 						align-items: center;
 					}
-
+						
 					.gallery-item img {
-						display: block;
+						display: flex;
+						max-width: 100%;
+						max-height: 100%;
+						object-fit: cover;
 					}
 
 					.image-counter {
+						position: relative;
+						justify-content: center;
 						text-align: center;
 						margin-top: 1.5rem;
 						font-size: 0.85rem;
-						color: #666;
+						color: #555;
+						padding: 0.2rem 0;
 						letter-spacing: 1px;
 						font-weight: 300;
+						flex: 1;
+						z-index: 5;
+						display: flex;
+						overflow: hidden;
+
 					}
 						
 					@keyframes slideInRight {
@@ -327,17 +342,17 @@ export default function ProjectPage() {
 					}
 						
 					.project-footer {
-						position: fixed;
-						bottom: 0;
+						position: relative;
+						bottom: 20;
 						left: 0;
 						right: 0;
 						background: white;
-						padding: 2rem;
-						z-index: 50;
+						padding: 1rem 2rem 1rem 2rem;
+						z-index: 5;
+						flex-shrink: 0;
 					}
 
 					.footer-content {
-						max-width: 1400px;
 						margin: 0 auto;
 						display: flex;
 						justify-content: space-between;
@@ -345,6 +360,7 @@ export default function ProjectPage() {
 					}
 
 					.project-title-footer h1 {
+						letter-spacing: 1px;
 						font-size: 1.5rem;
 						font-weight: 600;
 						margin: 0 0 0.5rem 0;
@@ -360,16 +376,22 @@ export default function ProjectPage() {
 					}
 
 					.about-project-link {
-						background: none;
-						color: #000;
-						border: none;
-						padding: 0;
+						display: inline-flex;
+						justify-content: center;
+						padding: 0.5rem 0rem;
 						font-size: 0.9rem;
+						background-color: white;
+						border: none;
+						color: #000;
 						font-weight: 400;
 						cursor: pointer;
 						transition: opacity 0.3s ease;
 						font-family: 'Archivo', sans-serif;
 						text-decoration: none;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						overflow: hidden;
+						max-width: 100%;
 					}
 
 					.about-project-link:hover {
